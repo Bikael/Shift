@@ -1,9 +1,10 @@
-
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    [Header("Camera Settings")]
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float followSpeed = 5f;
 
     private Transform player;
 
@@ -17,7 +18,13 @@ public class FollowPlayer : MonoBehaviour
         if (player == null)
             return;
 
-        transform.position = player.position + offset;
+        Vector3 targetPosition = player.position + offset;
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            targetPosition,
+            followSpeed * Time.deltaTime
+        );
     }
 
     public void SetTarget(Transform newTarget)
