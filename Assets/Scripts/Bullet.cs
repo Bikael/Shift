@@ -17,9 +17,11 @@ public class Bullet : MonoBehaviour
         if (character != null)
         {
             if (character.currentType == CharacterType.Enemy)
-            {
-                GameManager.Instance.SwapCharacters(character);
-            }
+                {
+                    TimeManager.Instance.TriggerSlowMotion();
+
+                    GameManager.Instance.SwapCharacters(character);
+                }
 
             Destroy(gameObject);
         }

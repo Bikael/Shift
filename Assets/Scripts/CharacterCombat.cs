@@ -55,7 +55,7 @@ public class CharacterCombat : MonoBehaviour
         if (Mouse.current == null)
             return;
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Keyboard.current.shiftKey.wasPressedThisFrame)
         {
             GameObject projectile = Instantiate(
                 bullet,
